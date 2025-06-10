@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/components/Navbar.css'; 
+import '../styles/components/Hamburger.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
