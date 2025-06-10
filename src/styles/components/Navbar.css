@@ -1,3 +1,4 @@
+/* Navbar styling */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -40,35 +41,22 @@
   transform: translateY(-1px);
 }
 
-
-@media (max-width: 768px) {
-  .sidebar {
-    display: none; /* Dölj sidebar på mobil */
-  }
-  .navbar__hamburger {
-    display: block; /* Visa “hamburger-ikon” istället */
-  }
-}
-
-
-/* Dölj hamburger på desktop */
+/* Hamburger-ikon */
 .navbar__hamburger {
   display: none;
   cursor: pointer;
+  color: white;
+  z-index: 1500;
 }
-/* Visa hamburger på mobil */
+
 @media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
   .navbar__hamburger {
     display: block;
   }
   .navbar__list {
-    flex-direction: column;
     display: none;
-    gap: 0;
-  }
-  .navbar__list--open {
-    display: flex;
   }
 }
-
-/* --- Alla mobilemenu__* och @keyframes slideInMenu borttagna, nu i Hamburger.css --- */

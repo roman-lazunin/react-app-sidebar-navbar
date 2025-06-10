@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { TaskLinks } from './Sidebar';
 import '../styles/components/Navbar.css'; 
 import '../styles/components/Hamburger.css';
+
+// Återanvändbar komponent för navigationslinks
+const NavLinks = ({ onClick }) => (
+  <>
+    <li><Link to="/" onClick={onClick}>Hem</Link></li>
+    <li><Link to="/about" onClick={onClick}>Om oss</Link></li>
+    <li><Link to="/contact" onClick={onClick}>Kontakt</Link></li>
+  </>
+);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Stäng meny vid klick på länk eller overlay
+  // Stänger menyn
   const handleClose = () => setIsOpen(false);
 
   return (
@@ -16,28 +26,25 @@ const Navbar = () => {
       <div className="navbar__hamburger" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </div>
-      <ul className={`navbar__list ${isOpen ? 'navbar__list--open' : ''}`}>
-        <li><Link to="/">Hem</Link></li>
-        <li><Link to="/about">Om oss</Link></li>
-        <li><Link to="/contact">Kontakt</Link></li>
+      
+      {/* Desktop meny */}
+      <ul className="navbar__list">
+        <NavLinks />
       </ul>
 
-      {/* Mobil sidomeny + overlay */}
+      {/* Mobil meny */}
       {isOpen && (
         <>
           <div className="mobilemenu__overlay" onClick={handleClose}></div>
           <div className="mobilemenu__panel">
             <div className="mobilemenu__close" onClick={handleClose}><FaTimes size={28} /></div>
             <ul className="mobilemenu__list">
-              <li><Link to="/" onClick={handleClose}>Hem</Link></li>
-              <li><Link to="/about" onClick={handleClose}>Om oss</Link></li>
-              <li><Link to="/contact" onClick={handleClose}>Kontakt</Link></li>
+              <NavLinks onClick={handleClose} />
             </ul>
-            <hr style={{margin: '1.5rem 0'}} />
-            <h4 className="mobilemenu__subtitle">Uppgifter</h4>
+            <hr />
+            <h4>Uppgifter</h4>
             <ul className="mobilemenu__list">
-              <li><Link to="/uppgift2" onClick={handleClose}>Uppgift 2</Link></li>
-              <li><Link to="/uppgift3" onClick={handleClose}>Uppgift 3</Link></li>
+              <TaskLinks onClick={handleClose} />
             </ul>
           </div>
         </>

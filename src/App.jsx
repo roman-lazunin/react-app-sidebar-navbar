@@ -7,7 +7,6 @@ import Contact from './pages/Contact';
 import Uppgift2 from './pages/Uppgift2';
 import Uppgift3 from './pages/Uppgift3';
 import './App.css';
-import './styles/page.css';
 
 function App() {
   return (
